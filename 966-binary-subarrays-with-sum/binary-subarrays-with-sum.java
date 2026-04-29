@@ -1,6 +1,7 @@
 class Solution {
     public int numSubarraysWithSum(int[] nums, int goal) {
         int n = nums.length;
+        //through prefix sum approach
         int count = 0;
         for(int i=0; i<n; i++){
             int sum = 0;
