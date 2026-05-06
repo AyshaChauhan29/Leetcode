@@ -5,21 +5,19 @@ class Solution {
         return nums[n/2];              */
 
         int n = nums.length;
-        Map<Integer, Integer> map = new HashMap<>();
-
-        // Count frequency of each element
-        for (int ele : nums) {
-            map.put(ele, map.getOrDefault(ele, 0) + 1);
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        for(int i=0; i<n; i++){
+            if(map.containsKey(nums[i])) {
+            map.put(nums[i], map.get(nums[i]) + 1);
+            }else{
+            map.put(nums[i], 1);
         }
 
-        // Find element with count > n/2
-        for (int key : map.keySet()) {
-            if (map.get(key) > n / 2) {
-                return key;
-            }
+        for(int key : map.keySet()){
+            if(map.get(key) > n/2) return key;
         }
-
-        return -1; // No majority element found 
-
+     }
+        return -1;
     }
 }
