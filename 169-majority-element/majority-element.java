@@ -13,7 +13,7 @@ class Solution {
             }else{
             map.put(nums[i], 1);
         }   */
-       //OR
+       //OR(Same above loop using for loop)
         
         for(int ele : nums){
             map.put(ele, map.getOrDefault(ele, 0)+1);
@@ -26,3 +26,8 @@ class Solution {
         return -1;
     }
 }
+
+
+
+//SC = O(size of hashMap)
+//TC = O(n)
