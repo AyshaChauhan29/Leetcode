@@ -11,3 +11,6 @@ class Solution {
         return count;
     }
 }
+
+// Time O(log n)  ---> In Every iteration, z is halved
+// Space O(1)
