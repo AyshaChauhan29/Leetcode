@@ -1,16 +1,14 @@
 class Solution {
     public List<Integer> targetIndices(int[] nums, int target) {
-        // Step 1 - Sort the array
+        int n = nums.length;
         Arrays.sort(nums);
-
-        // Step 2 - Linear search for target
-        List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == target) {
-                result.add(i);
+        
+        ArrayList<Integer> li = new ArrayList<>();
+        for(int i=0; i<n; i++){
+            if(nums[i] == target){
+                li.add(i);
             }
         }
-
-        return result;
-    }
+        return li;
+     }
 }
