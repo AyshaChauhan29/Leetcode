@@ -6,15 +6,17 @@ class Solution {
             int mid = left + (right - left) / 2; // avoids integer overflow
             
             if (nums[mid] == target) {
-                return mid;                // target found
+                return mid;                
             } else if (nums[mid] < target) {
-                left = mid + 1;            // search right half
+                left = mid + 1;            
             } else {
-                right = mid - 1;           // search left half
+                right = mid - 1;           
             }
         }
         
-        return left; // insertion point when not found
+        return left; // insertion point when not found 
+
+        // bcoz the intersection of low > high so we will return low;
 
     }
 }
