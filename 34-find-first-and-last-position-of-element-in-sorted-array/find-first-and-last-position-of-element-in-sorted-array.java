@@ -2,14 +2,15 @@ class Solution {
 
     // Find first occurrence
     public int findFirst(int[] nums, int target) {
-        int low = 0, high = nums.length - 1;
-        int ans = -1;
+        int low = 0;
+        int high = nums.length - 1;
+        int fi = -1;
 
         while (low <= high) {
             int mid = low + (high - low) / 2;
 
             if (nums[mid] == target) {
-                ans = mid;
+                fi = mid;
                 high = mid - 1; // search on left side
             } 
             else if (nums[mid] < target) {
@@ -20,20 +21,21 @@ class Solution {
             }
         }
 
-        return ans;
+        return fi;
     }
 
 
     // Find last occurrence
     public int findLast(int[] nums, int target) {
-        int low = 0, high = nums.length - 1;
-        int ans = -1;
+        int low = 0; 
+        int high = nums.length - 1;
+        int li = -1;
 
         while (low <= high) {
             int mid = low + (high - low) / 2;
 
             if (nums[mid] == target) {
-                ans = mid;
+                li = mid;
                 low = mid + 1; // search on right side
             } 
             else if (nums[mid] < target) {
@@ -44,7 +46,7 @@ class Solution {
             }
         }
 
-        return ans;
+        return li;
     }
 
     public int[] searchRange(int[] nums, int target) {
