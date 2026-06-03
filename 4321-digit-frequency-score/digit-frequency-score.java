@@ -15,11 +15,11 @@ class Solution {
             n = n / 10;
         }
 
-        int score = 0;
+        int ans = 0;
         for(int key : map.keySet()){
-            int ans = map.get(key);    
-            score += key * ans;
+           // int ans = map.get(key);    
+            ans = ans + key * map.get(key);
         }
-        return score;
+        return ans;
     }
 }
