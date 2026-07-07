@@ -1,6 +1,6 @@
 class Solution {
     public long sumAndMultiply(int n) {
-        String s = Integer.toString(n);
+    /*    String s = Integer.toString(n);
         String str = "";
 
         for(int i=0; i<s.length(); i++){
@@ -21,6 +21,28 @@ class Solution {
             x = x / 10;
         }
 
-        return (long) origX * sum;
+        return (long) origX * sum;        */
+
+
+        int rev = 0;
+        while(n > 0){
+            int rem = n % 10;
+            if(rem != 0){
+                rev = rev * 10 + rem;
+            }
+            n = n / 10;
+        }
+
+        int x = 0;
+        int sum = 0;
+
+        while(rev > 0){
+            int rem = rev % 10;
+            x = x * 10 + rem;
+
+            sum += rem;     //sum of digits
+            rev /= 10;
+        }
+        return (long)x * sum;
     }
 }
