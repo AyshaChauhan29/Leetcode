@@ -37,7 +37,6 @@ class Solution {
 
         while(low < high){
             if(arr[low] != arr[high]) return false;
-            i++;
             low++;
             high--;
         }
