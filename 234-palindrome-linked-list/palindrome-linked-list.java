@@ -9,36 +9,40 @@
  * }
  */
 class Solution {
-
-    static int count(ListNode head){
-        int ct = 0;
-        while(head != null){
-            ct++;
-            head = head.next;
-        }
-        return ct;
-    }
-
     public boolean isPalindrome(ListNode head) {
-        int n = count(head);
-        int[] arr = new int[n];
 
-        ListNode temp = head;
-        int i=0;
+        //find the mid of the LL
+        ListNode slow = head;
+        ListNode fast = head;
 
-        while(temp != null){
-            arr[i] = temp.val;
-            i++;
-            temp = temp.next;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
         }
 
-        int low = 0;
-        int high = arr.length-1;
+        ListNode mid = slow; 
 
-        while(low < high){
-            if(arr[low] != arr[high]) return false;
-            low++;
-            high--;
+        //reverse the linkedlist starting from mid till the end
+        ListNode curr = mid;
+        ListNode prev = null;
+
+        while(curr != null){
+            ListNode newNode = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = newNode;
+        }
+
+        curr = head;
+
+        while(prev != null){
+            if(prev.val != curr.val){
+                return false;
+            } 
+            else{
+                curr = curr.next;
+                prev = prev.next;
+            }
         }
         return true;
     }
