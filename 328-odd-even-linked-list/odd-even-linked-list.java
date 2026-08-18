@@ -10,56 +10,34 @@
  */
 class Solution {
 
-    static int count(ListNode head){
-        int ct = 0;
-        while(head != null){
-           ct++;
-           head = head.next;
-        }
-        return ct;
+    ListNode dummy = new ListNode(0);
+    ListNode res = dummy;
+
+    public void createNewLL(int x){ //x = 1
+        res.next = new ListNode(x);
+        res = res.next;
     }
 
     public ListNode oddEvenList(ListNode head) {
-        int n = count(head);
-        int[] arr = new int[n];
-        int k = 0;
+        if(head == null) return null;
 
+        //odd positions
         ListNode temp = head;
+
         while(temp != null){
-            arr[k] = temp.val;
-            k++;
-            temp = temp.next;
+            createNewLL(temp.val);
+            if (temp.next == null) break;
+            temp = temp.next.next;
         }
 
-        int[] ans = new int[n];
-        int idx = 0;
+        temp = head.next;
 
-        for(int i=0; i<n; i++){
-            if(i % 2 == 0) {
-                ans[idx] = arr[i];
-                idx++;
-            }
+        while(temp != null){
+            createNewLL(temp.val);
+            if (temp.next == null) break;
+            temp = temp.next.next;
         }
-
-        for(int i=0; i<n; i++){
-            if(i % 2 != 0) {
-                ans[idx] = arr[i];
-                idx++;
-            }
-        }
-
-        for(int i=0; i<n; i++){
-            arr[i] = ans[i];
-        }
-
-
-        ListNode dummy = new ListNode(0);
-        ListNode res = dummy;
-
-       for(int i=0; i<n; i++){
-         res.next = new ListNode(arr[i]);
-         res = res.next;
-       }
-       return dummy.next;
+        
+        return dummy.next;
     }
 }
