@@ -10,16 +10,20 @@
  */
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-        if(head == null) return head;
-        ListNode temp = head;
-        
-        while(temp != null && temp.next != null){
-            if(temp.val == temp.next.val) {
-                temp.next = temp.next.next;
-            }else{
-                temp = temp.next;
-            }
+        LinkedHashSet<Integer> set = new LinkedHashSet<>();
+
+        while(head != null){
+            set.add(head.val);
+            head = head.next;
         }
-        return head;
+
+        ListNode dummy = new ListNode(0);
+        ListNode res = dummy;
+        
+        for(int ele : set){
+            res.next = new ListNode(ele);
+            res = res.next;
+        }
+        return dummy.next;
     }
 }
