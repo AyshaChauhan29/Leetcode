@@ -10,36 +10,22 @@
  */
 class Solution {
 
-    static int count(ListNode head){
-        int ct = 0;
-        while(head != null){
-            ct++;
-            head = head.next;
-        }
-        return ct;
-    }
-
-
     public ListNode sortList(ListNode head) {
-        int n = count(head);
-        int[] arr = new int[n];
-        int j = 0;
+       ArrayList<Integer> li = new ArrayList<>();
+       ListNode temp = head;
 
-        ListNode temp = head;
+       while(temp != null){
+        li.add(temp.val);
+        temp = temp.next;
+       }
 
-        while(temp != null){
-            arr[j] = temp.val;
-            j++;
-            temp = temp.next;
-        }
+       Collections.sort(li);
 
-        Arrays.sort(arr);
+       ListNode dummy = new ListNode(0);
+       ListNode res = dummy;
 
-        ListNode dummy = new ListNode(0);
-        ListNode res = dummy;
-
-       for(int i=0; i<n; i++){
-         res.next = new ListNode(arr[i]);
+       for(int i=0; i<li.size(); i++){
+         res.next = new ListNode(li.get(i));
          res = res.next;
        }
        return dummy.next;
