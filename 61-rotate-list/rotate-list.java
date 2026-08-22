@@ -11,7 +11,7 @@
 class Solution {
     public ListNode rotateRight(ListNode head, int k) {
 
-        if(head == null || head.next == null) return head;
+        if(head == null || head.next == null) return head;    //if list is null/empty
 
         ArrayList<Integer> li = new ArrayList<>();
         ListNode temp = head;
@@ -23,26 +23,20 @@ class Solution {
 
         int n = li.size();
 
-        int[] arr = new int[n];
-        int j = 0;
-
         k = k % n;    // to perform only the leftover rotations
-
-        for(int i=n-k; i<n; i++){
-            arr[j] = li.get(i);
-            j++;
-        }
-
-        for(int i=0; i<n-k; i++){
-            arr[j] = li.get(i);
-            j++;
-        }
 
         ListNode dummy = new ListNode(0);
         ListNode res = dummy;
 
-        for(int i=0; i<arr.length; i++){
-            res.next = new ListNode(arr[i]);
+        // add last k elements
+        for (int i = n - k; i < n; i++) {
+            res.next = new ListNode(li.get(i));
+            res = res.next;
+        }
+
+        // Then add remaining elements
+        for (int i = 0; i < n - k; i++) {
+            res.next = new ListNode(li.get(i));
             res = res.next;
         }
         return dummy.next;
