@@ -10,13 +10,20 @@
  */
 class Solution {
 
+    ListNode dummy = new ListNode(0);
+    ListNode res = dummy;
+
+    void createLL(int x){
+        res.next = new ListNode(x);
+        res = res.next;
+    }
+
     public ListNode partition(ListNode head, int x) {
-        ArrayList<Integer> li = new ArrayList<>();
         ListNode temp = head;
 
         while(temp != null){
             if(temp.val < x){
-                li.add(temp.val);
+                createLL(temp.val);
             }
             temp = temp.next;
         }
@@ -25,20 +32,10 @@ class Solution {
 
         while(temp != null){
             if(temp.val >= x){
-                li.add(temp.val);
+                createLL(temp.val);
             }
             temp = temp.next;
         }
-
-        ListNode dummy = new ListNode(0);
-        ListNode res = dummy;
-
-       for(int i=0; i<li.size(); i++){
-         res.next = new ListNode(li.get(i));
-         res = res.next;
-       }
-
-       return dummy.next;
-        
+        return dummy.next;
     }
 }
