@@ -28,7 +28,7 @@ class Solution {
     }
 
     public ListNode swapNodes(ListNode head, int k) {
-    /*    ListNode temp = head;
+        ListNode temp = head;
 
         int len = count(head);
         int[] arr = new int[len];
@@ -40,37 +40,15 @@ class Solution {
             temp = temp.next;
         }
 
-        for(int j=0; j<len; j++){
-            int t = arr[k-1];
-            arr[k-1] = arr[len-k];
-            arr[len-k] = t;
-        }
+        // Swap kth from beginning and kth from end
+        int t = arr[k - 1];
+        arr[k - 1] = arr[len - k];
+        arr[len - k] = t;
+
 
         for(int j=0; j<len; j++){
             createLL(arr[j]);
         }
-        return dummy.next;    */
-
-        ListNode slow = head;
-        ListNode fast = head;
-
-        for(int i=0; i<k-1; i++){
-            slow = slow.next;
-        }
-
-        ListNode first = slow;
-
-        while(slow.next != null){
-            fast = fast.next;
-            slow = slow.next;
-        }
-
-        ListNode sec = fast;
-
-        int temp = first.val;
-        first.val = sec.val;
-        sec.val = temp;
-
-        return head;
+        return dummy.next;    
     }
 }
