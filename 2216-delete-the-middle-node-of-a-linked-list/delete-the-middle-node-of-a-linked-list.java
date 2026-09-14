@@ -9,34 +9,22 @@
  * }
  */
 class Solution {
-
-    ListNode dummy = new ListNode(0);
-    ListNode res = dummy;
-
-    void createLL(int x) {
-        res.next = new ListNode(x);
-        res = res.next;
-    }
-
     public ListNode deleteMiddle(ListNode head) {
-        ListNode temp = head;
 
+        if(head.next == null){
+            return null;
+        }
+        
         ListNode slow = head;
-        ListNode fast = head;
+        ListNode fast = head.next.next;
 
         while(fast != null && fast.next != null){
-            fast = fast.next.next;
             slow = slow.next;
+            fast = fast.next.next;
         }
 
-        ListNode mid = slow;
+        slow.next = slow.next.next;
 
-        while(temp != null){
-            if(temp != mid){
-                createLL(temp.val);
-            }
-            temp = temp.next;
-        }
-        return dummy.next;
+        return head;
     }
 }
