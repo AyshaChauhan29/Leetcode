@@ -19,37 +19,26 @@ class Solution {
         return ct;
     }
 
-
-    static int nextGreater(int x, int i, int[] arr){
-        for(int j=i+1; j<arr.length; j++){
-           if(arr[j] > x) {
-              return arr[j];
-           }
-        }
-        return 0;
-    }
-
-
     public int[] nextLargerNodes(ListNode head) {
         int n = count(head);
-        int[] arr = new int[n];
-
-        ListNode temp = head;
+        int[] ans = new int[n];
+        int i = 0;
         
-        int idx=0;
-        while(temp != null){
-            arr[idx] = temp.val;
-            idx++;
-            temp = temp.next;
+        ListNode slow = head;
+          
+        while(slow != null){
+            ListNode fast = slow.next;
+            
+            while(fast != null){
+               if(fast.val > slow.val){
+                  ans[i] = fast.val;
+                  break;
+               }
+               fast = fast.next; 
+            }
+            slow = slow.next;
+            i++;
         }
-
-        
-       int[] ans = new int[n];
-       
-       for(int i=0; i<n; i++){
-          int ele = nextGreater(arr[i], i, arr);
-          ans[i] = ele;
-       }
-       return ans;
+        return ans;
     }
 }
