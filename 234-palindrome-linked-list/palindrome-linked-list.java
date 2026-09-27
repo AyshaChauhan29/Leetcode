@@ -11,39 +11,20 @@
 class Solution {
     public boolean isPalindrome(ListNode head) {
 
-        //find the mid of the LL
-        ListNode slow = head;
-        ListNode fast = head;
+       Stack<Integer> s = new Stack<>();
+       ListNode temp = head;
 
-        while(fast != null && fast.next != null){
-            slow = slow.next;
-            fast = fast.next.next;
-        }
+       while(temp != null){
+         s.push(temp.val);
+         temp = temp.next;
+       }
 
-        ListNode mid = slow; 
+        temp = head;
 
-        //reverse the linkedlist starting from mid till the end
-        ListNode curr = mid;
-        ListNode prev = null;
-
-        while(curr != null){
-            ListNode newNode = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = newNode;
-        }
-
-        curr = head;
-
-        while(prev != null){
-            if(prev.val != curr.val){
-                return false;
-            } 
-            else{
-                curr = curr.next;
-                prev = prev.next;
-            }
-        }
-        return true;
+        while(temp != null){
+         if(temp.val != s.pop()) return false;
+         temp = temp.next;
+       }  
+       return true;
     }
 }
