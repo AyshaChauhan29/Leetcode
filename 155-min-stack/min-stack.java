@@ -1,35 +1,52 @@
 class MinStack {
 
-    Stack<Integer> s;
-    Stack<Integer> min;
+    int[] arr;
+    int top;
+    int size;
+    int min;
 
     public MinStack() {
-        s = new Stack<>();
-        min = new Stack<>();
+        size = 30001;
+        arr = new int[size];
+        top = -1;
+        min = Integer.MAX_VALUE;
+    }
+
+    private boolean isEmpty() {
+        return top == -1;
     }
     
     public void push(int value) {
-        s.push(value);
-
-        if(min.isEmpty() || value <= min.peek()){
-            min.push(value);
-        }
+        top = top + 1;
+        arr[top] = value;
     }
     
     public void pop() {
-        if(s.peek().equals(min.peek())){
-            min.pop();
+        if(!isEmpty()){
+            top--;
         }
-
-        s.pop();
     }
     
     public int top() {
-        return s.peek();
+        if(isEmpty()){
+            return -1;
+        }
+        return arr[top];
     }
     
     public int getMin() {
-        return min.peek();
+        if(isEmpty()){
+            return -1;
+        }
+        
+        // return minArr[top];
+        int min = arr[0];
+        for(int i=1; i<=top; i++){
+            if(arr[i] < min){
+                min = arr[i];
+            }
+        }
+        return min;
     }
 }
 
