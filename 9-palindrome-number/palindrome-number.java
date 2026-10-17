@@ -1,12 +1,16 @@
 class Solution {
-
-    static boolean isPal(int x, int rev, int dummy){
-        if(x == 0) return rev == dummy;
-        return isPal(x/10, rev * 10 + x % 10, dummy);
-    }
-
     public boolean isPalindrome(int x) {
-       if (x < 0) return false;
-       return isPal(x, 0, x);
+        if(x < 0) return false;
+
+        int rev = 0;
+        int orig = x;
+
+        while(x != 0){
+            int rem = x % 10;
+            rev = rev * 10 + rem;
+            x = x / 10;
+        }
+
+        return rev == orig;
     }
 }
