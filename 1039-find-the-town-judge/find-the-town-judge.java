@@ -1,15 +1,15 @@
 class Solution {
     public int findJudge(int n, int[][] trust) {
-        int[] inDegree = new int[n+1];
-        int[] outDegree = new int[n+1];
+        int[] inDeg = new int[n+1];
+        int[] outDeg = new int[n+1];
 
-        for(int[] arr : trust){
-            outDegree[arr[0]]++;
-            inDegree[arr[1]]++;
+        for(int[] t : trust){
+            inDeg[t[1]]++;
+            outDeg[t[0]]++;
         }
 
-        for(int i=1; i<n+1; i++){
-            if(inDegree[i] == n-1 && outDegree[i] == 0) return i;
+        for(int i=1; i<=n; i++){
+            if(inDeg[i] == n-1 && outDeg[i] == 0) return i;
         }
         return -1;
     }
