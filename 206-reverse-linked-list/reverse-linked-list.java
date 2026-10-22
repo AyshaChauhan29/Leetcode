@@ -9,7 +9,6 @@
  * }
  */
 class Solution {
-
     ListNode dummy = new ListNode(0);
     ListNode res = dummy;
 
@@ -37,7 +36,7 @@ class Solution {
 
             low++;
             high--;
-        }
+        } 
 
         for(int i=0; i<li.size(); i++){
             createLL(li.get(i));
