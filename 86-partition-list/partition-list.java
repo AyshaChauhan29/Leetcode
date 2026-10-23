@@ -13,7 +13,7 @@ class Solution {
     ListNode dummy = new ListNode(0);
     ListNode res = dummy;
 
-    void createLL(int x){
+    public void createLL(int x){
         res.next = new ListNode(x);
         res = res.next;
     }
@@ -36,6 +36,7 @@ class Solution {
             }
             temp = temp.next;
         }
+
         return dummy.next;
     }
 }
