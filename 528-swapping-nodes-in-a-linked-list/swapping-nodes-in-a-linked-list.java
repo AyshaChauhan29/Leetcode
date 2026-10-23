@@ -10,7 +10,7 @@
  */
 class Solution {
 
-    static int count(ListNode head){
+    static int size(ListNode head){
         int count = 0;
         while(head != null){
             count++;
@@ -21,18 +21,18 @@ class Solution {
 
     ListNode dummy = new ListNode(0);
     ListNode res = dummy;
-    
-    void createLL(int x) {
+
+    public void createLL(int x){
         res.next = new ListNode(x);
         res = res.next;
     }
 
     public ListNode swapNodes(ListNode head, int k) {
         ListNode temp = head;
+        int n = size(head);
 
-        int len = count(head);
-        int[] arr = new int[len];
-        int i=0;
+        int[] arr = new int[n];
+        int i= 0;
 
         while(temp != null){
             arr[i] = temp.val;
@@ -40,15 +40,14 @@ class Solution {
             temp = temp.next;
         }
 
-        // Swap kth from beginning and kth from end
-        int t = arr[k - 1];
-        arr[k - 1] = arr[len - k];
-        arr[len - k] = t;
+        //swap
+        int tp = arr[k-1];
+        arr[k-1] = arr[n-k];
+        arr[n-k] = tp;
 
-
-        for(int j=0; j<len; j++){
+        for(int j=0; j<n; j++){
             createLL(arr[j]);
         }
-        return dummy.next;    
+        return dummy.next;
     }
 }
