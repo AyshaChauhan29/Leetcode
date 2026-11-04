@@ -3,15 +3,21 @@ class Solution {
         int n = nums.length;
 
         int low = 0;
-        int min = nums[low];
-        
-        while(low < n-1){
-            if(nums[low+1] < nums[low]){
-                min = nums[low+1];
-                low++;
+        int high = n-1;
+
+        while(low < high){
+            int mid = low + (high - low) / 2;
+            
+            if(nums[mid] > nums[high]){
+                low = mid + 1;
             }
-            low++;
+            else if(nums[mid] < nums[high]){
+                high = mid;
+            }
+            else{
+                high--;
+            }   
         }
-        return min;
+        return nums[low];
     }
 }
