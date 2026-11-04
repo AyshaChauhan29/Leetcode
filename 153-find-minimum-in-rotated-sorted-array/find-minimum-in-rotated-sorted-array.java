@@ -3,16 +3,21 @@ class Solution {
         //using binary search
         int n = nums.length;
         int low = 0;
-        int min = nums[low];
+        int high = n-1;
 
-        while(low < n-1){
-            if(nums[low+1] < nums[low]){
-                min = nums[low+1];
-                low++;
+        while(low < high){
+            int mid = low + (high - low) / 2;
+
+            if(nums[mid] > nums[high]){
+                low = mid + 1;
             }
-            low++;
-           // min = Math.min(min, nums[low]);
+            else if(nums[mid] < nums[high]){
+                high = mid;
+            }
+            else{
+                high--;
+            }
         }
-        return min;
+        return nums[low];
     }
 }
