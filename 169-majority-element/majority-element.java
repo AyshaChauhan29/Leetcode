@@ -1,18 +1,22 @@
 class Solution {
     public int majorityElement(int[] nums) {
+        //BOYER-MOORE ALGORITHM
         int n = nums.length;
-        // Arrays.sort(nums);
-        // return nums[n/2];
 
-        HashMap<Integer, Integer> map= new HashMap<>();
+        int cand = 0;
+        int count = 0;
 
-        for(int ele : nums){
-            map.put(ele, map.getOrDefault(ele, 0)+1);
+        for(int i=0; i<n; i++){
+           if(count == 0){
+             cand = nums[i];
+           }
+
+           if(nums[i] == cand) count++;
+           else count--;
         }
-
-        for(int key : map.keySet()){
-            if(map.get(key) > n/2) return key;
-        }
-        return 0;
+        return cand;
     }
 }
+
+
+// standard Boyer-Moore algorithm assumes a majority element is guaranteed to exist. If it isn't guaranteed, you must do a second pass to verify that the candidate occurs more than n/2 times.
