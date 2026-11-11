@@ -35,8 +35,8 @@ class Solution {
         }
 
         // Moving Top-left
-        int i = row - 1;
-        int j = col - 1;
+        int i = row;
+        int j = col;
 
         while (i >= 0 && j >= 0) {
 
@@ -50,8 +50,8 @@ class Solution {
         }
 
         // Moving Top-right
-        i = row - 1;
-        j = col + 1;
+        i = row;
+        j = col;
 
         while (i >= 0 && j < 8) {
 
@@ -66,8 +66,8 @@ class Solution {
 
 
         // Moving bottom-left
-        i = row + 1;
-        j = col - 1;
+        i = row;
+        j = col;
 
         while (i < 8 && j >= 0) {
 
@@ -82,8 +82,8 @@ class Solution {
 
 
         // Moving bottom-right
-        i = row + 1;
-        j = col + 1;
+        i = row;
+        j = col;
 
         while (i < 8 && j < 8) {
 
