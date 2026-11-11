@@ -1,0 +1,1 @@
+<h2>queens-that-can-attack-the-king Notes</h2><hr>[ Time taken: 1hr 26m 2s ]
