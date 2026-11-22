@@ -13,10 +13,10 @@ class Solution {
             }
         }
 
-        String a = "";
-        while(!st.isEmpty()){
-            a += st.pop();
-        }
+        // String a = "";
+        // while(!st.isEmpty()){
+        //     a += st.pop();
+        // }
 
         for(int i=0; i<t.length(); i++){
             char c = t.charAt(i);
@@ -28,16 +28,19 @@ class Solution {
             }
         }
 
-        String b = "";
-        while(!st2.isEmpty()){
-            b += st2.pop();
+        // String b = "";
+        // while(!st2.isEmpty()){
+        //     b += st2.pop();
+        // }
+
+        if(st.size() != st2.size()) return false;   // different lengths can never match
+
+        while(!st.isEmpty() && !st2.isEmpty()){
+            if(!st.pop().equals(st2.pop())) return false;  
         }
 
-        // while(!st.isEmpty() && !st2.isEmpty()){
-        //     if(st.pop() != st2.pop()) return false;
-        // }
-        // return true;
+        return true; 
 
-        return a.equals(b);
+        //return a.equals(b);
     }
 }
