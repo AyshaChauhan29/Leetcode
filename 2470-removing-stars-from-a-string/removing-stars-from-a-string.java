@@ -1,6 +1,6 @@
 class Solution {
     public String removeStars(String s) {
-        int n = s.length();
+     /*   int n = s.length();
 
         Stack<Character> st = new Stack<>();
 
@@ -25,6 +25,21 @@ class Solution {
             ans += st2.pop();
         }
 
-        return ans;
+        return ans;           */   //--------------> O(n2) 
+
+
+        StringBuilder sb = new StringBuilder(); // acts as our stack
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+
+            if (c == '*') {
+                sb.deleteCharAt(sb.length() - 1); // pop: remove the last char
+            } else {
+                sb.append(c);                     // push
+            }
+        }
+
+        return sb.toString();
     }
 }
