@@ -15,20 +15,36 @@ class Solution {
             
         }
 
+        // String ans = "";
+        
+        // while(!st.isEmpty()){
+        //     ans += st.pop();
+        // }
+        
+        // String rev = "";
+        // for(int i=ans.length()-1; i>=0; i--){
+        //    rev += ans.charAt(i);
+        // }
+      
+      //OR
+
+        Stack<Character> st2 = new Stack<>();
+        while(!st.isEmpty()){
+            st2.push(st.pop());
+        }
+
         String ans = "";
         
-        while(!st.isEmpty()){
-            ans += st.pop();
+        while(!st2.isEmpty()){
+            ans += st2.pop();
         }
-        
-        String rev = "";
-        for(int i=ans.length()-1; i>=0; i--){
-           rev += ans.charAt(i);
-        }
+
         // StringBuilder sb = new StringBuilder(ans);
         // sb.append(ans);
 
         //return new StringBuilder(s).reverse().toString();
-        return rev;
+        //return rev;
+
+        return ans;
     }
 }
